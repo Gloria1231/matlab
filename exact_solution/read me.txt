@@ -1,0 +1,19 @@
+We solve the anisotropic phase field dendritic crystal growth model:
+\tau \phi_t = - \frac{\delta E}{\delta\phi} -4\lambda\varepsilon F(\phi)*u,
+u_t        = D*\Delta u+4\varepsilon^2*K*F(\phi)*\phi_t,
+where  \tau, \lambda, \varepsilon, D, and K are coeffecients. E denotes the energy functional. 
+phi is the phase field, u stands for temperature. 
+Here we use the BDF1 scheme in time and, the Fourier spectral method in space.
+
+ Let's replace the function  4\varepsilon^2F(\phi) with (1-\phi^2)^2 in code. 
+so the model can be rewritten as
+
+%    (1)    \tau \phi_t =-\frac{\delta E}{\delta\phi} -lamda/epsilon*(1-\phi^2)^2*u
+%    (2)    u_t = D*\Delta u + K*(1-\phi^2)^2*\phi_t
+
+For this code (2D): the "PDGM_2D_BDF1_617.m" is the main code. 
+step 1: Running order_1 can get example 1. The accuracy test is completed.
+
+For 3D：Running "PDGM_3D_BDF1_617.m" is the main code. This is consistent with the result in Section 4.4.
+Other examples can be implemented similarly.
+
